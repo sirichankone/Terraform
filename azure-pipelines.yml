@@ -58,3 +58,4 @@ steps:
     command: 'apply'
     workingDirectory: '$(System.DefaultWorkingDirectory)'
     environmentServiceNameAzureRM: 'terraform connection'
+    commandOptions: '-auto-approve'
