@@ -27,7 +27,7 @@ steps:
     provider: 'azurerm'
     command: 'init'
     workingDirectory: '$(System.DefaultWorkingDirectory)'
-    backendServiceArm: 'terraform connection'
+    backendServiceArm: 'terraforminfrabuild'
     backendAzureRmResourceGroupName: 'rg-terraform'
     backendAzureRmStorageAccountName: 'saterraform123'
     backendAzureRmContainerName: 'tfstate'
