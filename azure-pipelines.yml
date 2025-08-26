@@ -5,6 +5,13 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+# Install Terraform (Microsoft DevLabs version)
+- task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
+  displayName: "Install Terraform"
+  inputs:
+    terraformVersion: '1.9.5'
+
+# Hello world step
 - script: echo "Hello, world!"
   displayName: "Run a one-line script"
 
