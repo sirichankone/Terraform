@@ -41,10 +41,6 @@ steps:
     command: 'validate'
     workingDirectory: '$(System.DefaultWorkingDirectory)'
 
-# 🔍 Debug step → check if ARM_* variables exist
-- script: printenv | grep ARM_
-  displayName: "Debug: Print ARM environment variables"
-
 # Terraform Plan
 - task: TerraformTaskV3@3
   displayName: "Terraform Plan"
