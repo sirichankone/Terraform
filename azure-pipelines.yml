@@ -48,7 +48,7 @@ steps:
     provider: 'azurerm'
     command: 'plan'
     workingDirectory: '$(System.DefaultWorkingDirectory)'
-    environmentServiceNameAzureRM: 'terraform connection'
+    environmentServiceNameAzureRM: 'terraforminfrabuild'
 
 # Terraform Apply
 - task: TerraformTaskV3@3
@@ -57,5 +57,5 @@ steps:
     provider: 'azurerm'
     command: 'apply'
     workingDirectory: '$(System.DefaultWorkingDirectory)'
-    environmentServiceNameAzureRM: 'terraform connection'
+    environmentServiceNameAzureRM: 'terraforminfrabuild'
     commandOptions: '-auto-approve'
