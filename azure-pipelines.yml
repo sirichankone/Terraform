@@ -1,0 +1,53 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo "Hello, world!"
+  displayName: "Run a one-line script"
+
+- script: |
+    echo "Add other tasks to build, test, and deploy your project."
+    echo "See https://aka.ms/yaml"
+  displayName: "Run a multi-line script"
+
+# Terraform Init
+- task: TerraformTaskV3@3
+  displayName: "Terraform Init"
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
+    backendServiceArm: 'terraform connection'
+    backendAzureRmResourceGroupName: 'rg-terraform'
+    backendAzureRmStorageAccountName: 'saterraform123'
+    backendAzureRmContainerName: 'tfstate'
+    backendAzureRmKey: 'terra.tfstate'
+
+# Terraform Validate
+- task: TerraformTaskV3@3
+  displayName: "Terraform Validate"
+  inputs:
+    provider: 'azurerm'
+    command: 'validate'
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
+
+# Terraform Plan
+- task: TerraformTaskV3@3
+  displayName: "Terraform Plan"
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
+    environmentServiceNameAzureRM: 'terraform connection'
+
+# Terraform Apply
+- task: TerraformTaskV3@3
+  displayName: "Terraform Apply"
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
+    environmentServiceNameAzureRM: 'terraform connection'
