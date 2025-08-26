@@ -1,0 +1,3 @@
+RGname = "terraformRG"
+locatoion = "eastus"
+
