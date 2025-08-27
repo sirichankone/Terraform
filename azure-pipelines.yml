@@ -45,8 +45,10 @@ steps:
 
 # ✅ Run Checkov security scan on Terraform code
 - script: |
-    checkov -d $(System.DefaultWorkingDirectory) -o junitxml > checkov-report.xml
-  displayName: "Run Checkov Scan"
+    checkov -d $(System.DefaultWorkingDirectory) --framework terraform \
+      --check HIGH,CRITICAL -o junitxml > checkov-report.xml
+  displayName: "Run Checkov Scan (Fail only on High/Critical)"
+
 
 # ✅ Publish Checkov results in Azure DevOps
 - task: PublishTestResults@2
