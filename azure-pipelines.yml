@@ -73,19 +73,19 @@ steps:
     workingDirectory: '$(System.DefaultWorkingDirectory)'
     environmentServiceNameAzureRM: 'terraforminfrabuild'
 
-# Terraform Apply
-- task: TerraformTaskV3@3
-  displayName: "Terraform Apply"
-  inputs:
-    provider: 'azurerm'
-    command: 'apply'
-    workingDirectory: '$(System.DefaultWorkingDirectory)'
-    environmentServiceNameAzureRM: 'terraforminfrabuild'
-    commandOptions: '-auto-approve'
-
-# # Terraform Destroy
-# - task: TerraformTask@5
+# # Terraform Apply
+# - task: TerraformTaskV3@3
+#   displayName: "Terraform Apply"
 #   inputs:
 #     provider: 'azurerm'
-#     command: 'destroy'
+#     command: 'apply'
+#     workingDirectory: '$(System.DefaultWorkingDirectory)'
 #     environmentServiceNameAzureRM: 'terraforminfrabuild'
+#     commandOptions: '-auto-approve'
+
+# Terraform Destroy
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'destroy'
+    environmentServiceNameAzureRM: 'terraforminfrabuild'
