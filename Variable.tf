@@ -3,3 +3,7 @@ variable "location" {}
 variable "storage_account_name"  {}
 variable "vnetname" {}
 variable "iprange" {}
+variable "acr_name" {}
+variable "cluster_name" {}
+variable "kubernetes_version" {}
+variable "system_node_count" {}
