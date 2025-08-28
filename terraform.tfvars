@@ -5,6 +5,6 @@ iprange = ["10.0.0.0/16"]
 vnetname = "kube-vnet"
 acr_name = "sree4071acr"
 cluster_name = "sreekubecluster"
-kubernetes_version = "1.26.3"
+kubernetes_version = "1.29.2"
 system_node_count  = "2"
 
